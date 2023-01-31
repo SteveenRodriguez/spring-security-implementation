@@ -1,0 +1,107 @@
+====================================================================================================
+PASOS:
+
+1- Se agrega la dependencia de SpringSecurity StarterWeb
+    Enlace -> https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+
+2- Se agregan las dependencias para generar un JWT
+    Enlace ->
+<!--		Dependencias para generar un JWT-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+----------------------------------------------------------------------------------------------------
+
+3- Crear clase WebSecurityConfig
+4- Crear clase TokenUtils (sirve para ayudar a crear los tokens)
+5- Crear clase para recibir el email y la contraseña -->  AuthCredentials
+6- Crear servicio UserDetailsServiceImpl
+    6.1 Definir el método de findOneByEmail en el UsuarioRepository
+7- Crear la clase UserDetailsImpl y recibe una entidad Usuario
+
+FILTROS
+    Autenticación
+8- Crear clase JWTAuthenticationFilter
+Nota: una vez realizada la autenticación, procedemos a crear el filtro para
+la autorización
+
+    Autorización
+9- Crear clase JWTAuthorizationFilter
+
+PASO FINAL
+10- Inyectar en la clase WebSecurityConfig (comentar el método que guarda un usuario en memoria)
+    private final UserDetailsService userDetailsService;
+    private final JWTAuthorizationFilter jwtAuthorizationFilter;
+
+    10.1- Se crea una instancia de JWTAuthenticationFilter
+    10.2- Se agregan los filtros de jwtAuthenticationFilter y jwtAuthorizationFilter (before)
+
+11- Probar en Postman con el método POST y el body respectivo
+{
+    "email": "steveen@mail.com",
+    "password": "steveen"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
