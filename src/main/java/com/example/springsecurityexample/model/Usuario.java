@@ -1,8 +1,9 @@
 package com.example.springsecurityexample.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 
 @Entity
 @Data

@@ -1,5 +1,7 @@
-package com.example.springsecurityexample.security;
+package com.example.springsecurityexample.config;
 
+import com.example.springsecurityexample.security.JWTAuthenticationFilter;
+import com.example.springsecurityexample.security.JWTAuthorizationFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,8 +37,10 @@ public class WebSecurityConfig {
                 // desactivamos el csrf
                 .csrf().disable()
                 // ingresamos a las reglas de las solicitudes
-                .authorizeRequests()
+                .authorizeHttpRequests()
                 // cualquier solicitud que ingrese debe estar autenticada
+                .requestMatchers("contactos")
+                .permitAll()
                 .anyRequest()
                 // debe estar autenticada
                 .authenticated()
