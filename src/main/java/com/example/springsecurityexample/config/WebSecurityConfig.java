@@ -34,13 +34,16 @@ public class WebSecurityConfig {
         jwtAuthenticationFilter.setFilterProcessesUrl("/login"); //Ruta para autenticación http://localshos:8080/login
 
         return httpSecurity
+                .cors()
+                .and()
                 // desactivamos el csrf
                 .csrf().disable()
                 // ingresamos a las reglas de las solicitudes
                 .authorizeHttpRequests()
                 // cualquier solicitud que ingrese debe estar autenticada
-                .requestMatchers("contactos")
-                .permitAll()
+                // permite el acceso al endpoint contactos a cualquier usuario este o no identificado
+//                .requestMatchers("/api/contactos")
+//                .permitAll()
                 .anyRequest()
                 // debe estar autenticada
                 .authenticated()
